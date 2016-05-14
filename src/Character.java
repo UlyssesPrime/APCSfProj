@@ -13,7 +13,7 @@ public class Character{
   public String getName(){
     return name;
   }
-  public BattleMon getBattleMon(int i){
+  public BattleMons getBattleMon(int i){
     return mons[i];
   }
 
