@@ -29,16 +29,4 @@ public class Moves{
   public String getType(){
     return type;
   }
-  public double generateModifier(boolean stab, int ){ //Method in progress
-    double rand = Math.random();
-    if (stab = true){
-      double modifier = 1.5 *
-    }
-    else if(stab = false)
-  }
-
-  public int generateDamage(int base, int level, int attack, int defense, double modifier){
-    int damage = Math.round(((2 * level) / 250) * (attack / defense) * base + 2);
-    return damage;
-  }
 }
