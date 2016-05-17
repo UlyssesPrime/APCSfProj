@@ -2,14 +2,14 @@ public class Battle{
   private final String[] attackMessages = {"It's Super Effective!", "It's Not Very Effective.", "It Had No Effect..."};
   private final String[] types = {"Bug", "Dragon", "Electric", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Water"};
   private final String[] battleMessages = {};
-
-  public double generateModifier(boolean stab, Moves move, BattleMons user, BattleMons defender){
+  //http://bulbapedia.bulbagarden.net/wiki/Damage#Damage_formula
+  public double generateModifier(boolean stab, Moves move, BattleMons user, BattleMons defender, int matchup){
     double rand = 0;
     while (!(rand >= 0.85 && rand <= 1.00)){
       rand = Math.random() + 0.01;
     }
     if (stab = true){
-      double modifier = 1.5 *
+      double modifier = 1.5 *  * rand;
     }
     else if(stab = false){
 

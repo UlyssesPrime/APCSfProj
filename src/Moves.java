@@ -3,7 +3,7 @@ public class Moves{
   private int uses; //how many times it can be used
   private int num; //position in moveList for the pokemon
   private String type; //attack type
-  //http://bulbapedia.bulbagarden.net/wiki/Damage#Damage_formula
+
   public Moves(){
     dam = 0;
     uses = 0;
