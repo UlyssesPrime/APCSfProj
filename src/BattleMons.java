@@ -8,6 +8,7 @@ public class BattleMons{
   private int accuracy;
   private int attack;
   private int defense;
+  private int statStage;
   private String name;
   private String type1;
   private String type2;

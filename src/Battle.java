@@ -3,160 +3,155 @@ public class Battle{
   private final String[] types = {"Bug", "Dragon", "Electric", "Fighting", "Fire", "Flying", "Ghost", "Grass", "Ground", "Ice", "Normal", "Poison", "Psychic", "Rock", "Water"};
   private final String[] battleMessages = {};
   //http://bulbapedia.bulbagarden.net/wiki/Damage#Damage_formula
-  public double generateModifier(boolean stab, Moves move, BattleMons user, BattleMons defender, int matchup){
+  public double generateModifier(Moves move, BattleMons user, BattleMons defender, int effect){
     double rand = 0;
     while (!(rand >= 0.85 && rand <= 1.00)){
       rand = Math.random() + 0.01;
     }
-    if (stab = true){
-      double modifier = 1.5 *  * rand;
+    if (user.getType1().equals(move.getType()) || user.getType2().equals(move.getType())){
+      double modifier = 1.5 * effect * rand;
     }
-    else if(stab = false){
-
+    else (stab = false){
+      double modifier = effect * rand;
     }
+    return modifier;
   }
 
   public int generateDamage(int base, int attack, int defense, double modifier){
-    int damage = Math.round((((2 * 15) / 250) * (attack / defense) * base + 2) * modifier);
+    int damage = Math.round((((2 * 15 + 10) / 250) * (attack / defense) * base + 2) * modifier);
     return damage;
   }
 
   /* To be used when attacking an enemy's BattleMon */
-  public void useMove(Moves m, BattleMons opp){
-    if (m.getType().equals(types[4]) && opp.getType1().equals(types[0]) || opp.getType2().equals(types[0])){
+  public void useMove(Moves m, BattleMons user, BattleMons defender){
+    if (m.getType().equals(types[4]) && defender.getType1().equals(types[0]) || defender.getType2().equals(types[0])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense(), moves.generateDamage())); //changes in progress
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[5]) && opp.getType1().equals(types[0]) || opp.getType2().equals(types[0])){
+    else if (m.getType().equals(types[5]) && defender.getType1().equals(types[0]) || defender.getType2().equals(types[0])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[7]) && opp.getType1().equals(types[0]) || opp.getType2().equals(types[0])){
+    else if (m.getType().equals(types[7]) && defender.getType1().equals(types[0]) || defender.getType2().equals(types[0])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[11]) && opp.getType1().equals(types[0]) || opp.getType2().equals(types[0])){
+    else if (m.getType().equals(types[11]) && defender.getType1().equals(types[0]) || defender.getType2().equals(types[0])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[13]) && opp.getType1().equals(types[0]) || opp.getType2().equals(types[0])){
+    else if (m.getType().equals(types[13]) && defender.getType1().equals(types[0]) || defender.getType2().equals(types[0])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[9]) && opp.getType1().equals(types[1]) || opp.getType2().equals(types[1])){
+    else if (m.getType().equals(types[9]) && defender.getType1().equals(types[1]) || defender.getType2().equals(types[1])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[2]) && opp.getType1().equals(types[2]) || opp.getType2().equals(types[2])){
+    else if (m.getType().equals(types[2]) && defender.getType1().equals(types[2]) || defender.getType2().equals(types[2])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[5]) && opp.getType1().equals(types[2]) || opp.getType2().equals(types[2])){
+    else if (m.getType().equals(types[5]) && defender.getType1().equals(types[2]) || defender.getType2().equals(types[2])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[8]) && opp.getType1().equals(types[2]) || opp.getType2().equals(types[2])){
+    else if (m.getType().equals(types[8]) && defender.getType1().equals(types[2]) || defender.getType2().equals(types[2])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[5]) && opp.getType1().equals(types[3]) || opp.getType2().equals(types[3])){
+    else if (m.getType().equals(types[5]) && defender.getType1().equals(types[3]) || defender.getType2().equals(types[3])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[12]) && opp.getType1().equals(types[3]) || opp.getType2().equals(types[3])){
+    else if (m.getType().equals(types[12]) && defender.getType1().equals(types[3]) || defender.getType2().equals(types[3])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[13]) && opp.getType1().equals(types[3]) || opp.getType2().equals(types[3])){
+    else if (m.getType().equals(types[13]) && defender.getType1().equals(types[3]) || defender.getType2().equals(types[3])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[0]) && opp.getType1().equals(types[4]) || opp.getType2().equals(types[4])){
+    else if (m.getType().equals(types[0]) && defender.getType1().equals(types[4]) || defender.getType2().equals(types[4])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[7]) && opp.getType1().equals(types[4]) || opp.getType2().equals(types[4])){
+    else if (m.getType().equals(types[7]) && defender.getType1().equals(types[4]) || defender.getType2().equals(types[4])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[8]) && opp.getType1().equals(types[4]) || opp.getType2().equals(types[4])){
+    else if (m.getType().equals(types[8]) && defender.getType1().equals(types[4]) || defender.getType2().equals(types[4])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[13]) && opp.getType1().equals(types[4]) || opp.getType2().equals(types[4])){
+    else if (m.getType().equals(types[13]) && defender.getType1().equals(types[4]) || defender.getType2().equals(types[4])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[14]) && opp.getType1().equals(types[4]) || opp.getType2().equals(types[4])){
+    else if (m.getType().equals(types[14]) && defender.getType1().equals(types[4]) || defender.getType2().equals(types[4])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[0]) && opp.getType1().equals(types[5]) || opp.getType2().equals(types[5])){
+    else if (m.getType().equals(types[0]) && defender.getType1().equals(types[5]) || defender.getType2().equals(types[5])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[2]) && opp.getType1().equals(types[5]) || opp.getType2().equals(types[5])){
+    else if (m.getType().equals(types[2]) && defender.getType1().equals(types[5]) || defender.getType2().equals(types[5])){
       System.out.println(attackMessages[1]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) * 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));
     }
-    else if (m.getType().equals(types[3]) && opp.getType1().equals(types[5]) || opp.getType2().equals(types[5])){
+    else if (m.getType().equals(types[3]) && defender.getType1().equals(types[5]) || defender.getType2().equals(types[5])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    else if (m.getType().equals(types[7]) && opp.getType1().equals(types[5]) || opp.getType2().equals(types[5])){
+    else if (m.getType().equals(types[7]) && defender.getType1().equals(types[5]) || defender.getType2().equals(types[5])){
       System.out.println(attackMessages[2]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense()) / 2);
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 0.5)));
     }
-    /*else if (m.getType().equals(types[]) && opp.getType1().equals(types[]) || opp.getType2().equals(types[])){
+    else if (m.getType().equals(types[]) && defender.getType1().equals(types[]) || defender.getType2().equals(types[])){
       System.out.println(attackMessages[]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense())  2);
-    }
-    else if (m.getType().equals(types[]) && opp.getType1().equals(types[]) || opp.getType2().equals(types[])){
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));    }
+    else if (m.getType().equals(types[]) && defender.getType1().equals(types[]) || defender.getType2().equals(types[])){
       System.out.println(attackMessages[]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense())  2);
-    }
-    else if (m.getType().equals(types[]) && opp.getType1().equals(types[]) || opp.getType2().equals(types[])){
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));    }
+    else if (m.getType().equals(types[]) && defender.getType1().equals(types[]) || defender.getType2().equals(types[])){
       System.out.println(attackMessages[]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense())  2);
-    }
-    else if (m.getType().equals(types[]) && opp.getType1().equals(types[]) || opp.getType2().equals(types[])){
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));    }
+    else if (m.getType().equals(types[]) && defender.getType1().equals(types[]) || defender.getType2().equals(types[])){
       System.out.println(attackMessages[]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense())  2);
-    }
-    else if (m.getType().equals(types[]) && opp.getType1().equals(types[]) || opp.getType2().equals(types[])){
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));    }
+    else if (m.getType().equals(types[]) && defender.getType1().equals(types[]) || defender.getType2().equals(types[])){
       System.out.println(attackMessages[]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense())  2);
-    }
-    else if (m.getType().equals(types[]) && opp.getType1().equals(types[]) || opp.getType2().equals(types[])){
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));    }
+    else if (m.getType().equals(types[]) && defender.getType1().equals(types[]) || defender.getType2().equals(types[])){
       System.out.println(attackMessages[]);
       System.out.println();
-      opp.takeDam(generateDamage(m.getDam(), opp.getLevel(), opp.getAttack(), opp.getDefense())  2);
-    } */
+      defender.takeDam(generateDamage(m.getDam(), defender.getLevel(), defender.getAttack(), defender.getDefense(), this.generateModifier(move, user, defender, 2)));    }
   }
 }

@@ -1,3 +1,3 @@
-public class TailWhip extends Moves{
-  
+public class TailWhip extends StatusMoves{
+
 }

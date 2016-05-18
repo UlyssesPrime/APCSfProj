@@ -1,3 +1,3 @@
-public class Growl extends Moves{
-  
+public class Growl extends StatusMoves{
+
 }

@@ -1,3 +1,3 @@
-public class Leer extends Moves{
-  
+public class Leer extends StatusMoves{
+
 }

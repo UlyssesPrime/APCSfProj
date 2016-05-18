@@ -1,3 +1,3 @@
-public class SandAttack extends Moves{
-  
+public class SandAttack extends StatusMoves{
+
 }
