@@ -8,7 +8,11 @@ public class BattleMons{
   private int accuracy;
   private int attack;
   private int defense;
-  private int statStage;
+  private int speedStage;
+  private int evasivenessStage;
+  private int accuracyStage;
+  private int attackStage;
+  private int defenseStage;
   private String name;
   private String type1;
   private String type2;
@@ -24,6 +28,11 @@ public class BattleMons{
     accuracy = 0;
     attack = 0;
     defense = 0;
+    speedStage = 0;
+    evasivenessStage = 0;
+    accuracyStage = 0;
+    attackStage = 0;
+    defenseStage = 0;
     name = "";
     type1 = "";
     type2 = "";
@@ -39,6 +48,11 @@ public class BattleMons{
     accuracy = ac;
     attack = at;
     defense = d;
+    speedStage = 0;
+    evasivenessStage = 0;
+    accuracyStage = 0;
+    attackStage = 0;
+    defenseStage = 0;
     name = n;
     type1 = t1;
     type2 = t2;
@@ -75,6 +89,21 @@ public class BattleMons{
   public int getDefense(){
     return defense;
   }
+  /*public int getSpeedStage(){
+    return speedStage;
+  }
+  public int getEvasivenessStage(){
+    return evasivenessStage;
+  }
+  public int getAccuracyStage(){
+    return int accuracyStage;
+  }
+  public int getAttackStage(){
+    return attackStage;
+  }
+  public int getDefenseStage(){
+    return defenseStage;
+  }*/
   public String getName(){
     return name;
   }
@@ -86,6 +115,43 @@ public class BattleMons{
   }
   public boolean getIsAlive(){
     return isAlive;
+  }
+
+  public void setCurrentHP(int h){
+    currentHP = h;
+  }
+  public void setSpeed(int s){
+    speed = s;
+  }
+  public void setEvasiveness(int e){
+    evasiveness = e;
+  }
+  public void setAccuracy(int a){
+    accuracy = a;
+  }
+  public void setAttack(int a){
+    attack = a;
+  }
+  public void setDefense(int d){
+    defense = d;
+  }
+/*  public void setSpeedStage(int s){
+    speedStage = s;
+  }
+  public void setEvasivenessStage(int e){
+    evasivenessStage = e;
+  }
+  public void setAccuracyStage(int a){
+    accuracyStage = a;
+  }
+  public void setAttackStage(int a){
+    attackStage = a;
+  }
+  public void setDefenseStage(int d){
+    defenseStage = d;
+  }*/
+  public void setIsAlive(boolean i){
+    isAlive = i;
   }
 
   public void takeDam(int h){

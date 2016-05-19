@@ -2,8 +2,8 @@ public class StatusMoves extends Moves{
   private int stage;
   private String stat;
 
-  public StatusMoves(int t, int s, int st){
-    super(0, t);
+  public StatusMoves(int d, int t, int s, int st){
+    super(d, t);
     stage = s;
     stat = st;
   }

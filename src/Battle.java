@@ -22,6 +22,14 @@ public class Battle{
     return damage;
   }
 
+  /*public void dropStatStage(StatusMoves move, BattleMons defender){
+    if (move.getStat().equals("Accuracy")){
+      if (move.getDam() < 0){
+
+      }
+    }
+  }*/
+
   /* To be used when attacking an enemy's BattleMon */
   public void useMove(Moves m, BattleMons user, BattleMons defender){
     if (m.getType().equals(types[4]) && defender.getType1().equals(types[0]) || defender.getType2().equals(types[0])){
