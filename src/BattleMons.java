@@ -4,15 +4,8 @@ public class BattleMons{
   private int currentHP;
   private int level;
   private int speed;
-//  private int evasiveness;
-  //private int accuracy;
   private int attack;
   private int defense;
-/*  private int speedStage;
-  private int evasivenessStage;
-  private int accuracyStage;
-  private int attackStage;
-  private int defenseStage;*/
   private String name;
   private String type1;
   private String type2;
@@ -24,15 +17,8 @@ public class BattleMons{
     currentHP = 0;
     level = 0;
     speed = 0;
-    evasiveness = 0;
-    //accuracy = 0;
     attack = 0;
     defense = 0;
-  /*  speedStage = 0;
-    evasivenessStage = 0;
-    accuracyStage = 0;
-    attackStage = 0;
-    defenseStage = 0;*/
     name = "";
     type1 = "";
     type2 = "";
@@ -44,15 +30,8 @@ public class BattleMons{
     currentHP = HP;
     level = l;
     speed = s;
-  //  evasiveness = e;
-    //accuracy = ac;
     attack = at;
     defense = d;
-    /*speedStage = 0;
-    evasivenessStage = 0;
-    accuracyStage = 0;
-    attackStage = 0;
-    defenseStage = 0;*/
     name = n;
     type1 = t1;
     type2 = t2;
@@ -63,7 +42,7 @@ public class BattleMons{
     return moveList;
   }
   public Moves getMove(int i){
-    return moveList[1];
+    return moveList[i];
   }
   public int getHP(){
     return HP;
@@ -77,33 +56,12 @@ public class BattleMons{
   public int getSpeed(){
     return speed;
   }
-  public int getEvasiveness(){
-    return evasiveness;
-  }
-  public int getAccuracy(){
-    return accuracy;
-  }
   public int getAttack(){
     return attack;
   }
   public int getDefense(){
     return defense;
   }
-  /*public int getSpeedStage(){
-    return speedStage;
-  }
-  public int getEvasivenessStage(){
-    return evasivenessStage;
-  }
-  public int getAccuracyStage(){
-    return int accuracyStage;
-  }
-  public int getAttackStage(){
-    return attackStage;
-  }
-  public int getDefenseStage(){
-    return defenseStage;
-  }*/
   public String getName(){
     return name;
   }
@@ -123,33 +81,12 @@ public class BattleMons{
   public void setSpeed(int s){
     speed = s;
   }
-  public void setEvasiveness(int e){
-    evasiveness = e;
-  }
-  public void setAccuracy(int a){
-    accuracy = a;
-  }
   public void setAttack(int a){
     attack = a;
   }
   public void setDefense(int d){
     defense = d;
   }
-/*  public void setSpeedStage(int s){
-    speedStage = s;
-  }
-  public void setEvasivenessStage(int e){
-    evasivenessStage = e;
-  }
-  public void setAccuracyStage(int a){
-    accuracyStage = a;
-  }
-  public void setAttackStage(int a){
-    attackStage = a;
-  }
-  public void setDefenseStage(int d){
-    defenseStage = d;
-  }*/
   public void setIsAlive(boolean i){
     isAlive = i;
   }

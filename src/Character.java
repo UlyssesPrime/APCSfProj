@@ -16,24 +16,11 @@ public class Character{
   public BattleMons getBattleMon(int i){
     return mons[i];
   }
-  public BattleMons
+  public BattleMons[] getAllMons(){
+    return mons;
+  }
 
   public void setName(String n){
     name = n;
-  }
-
-  public boolean allMonsAlive(){
-    int temp = 0;
-    for (int i = 0; i < mons.length(); i++){
-      if (mons[i].getIsAlive() == true){
-        temp += 1;
-      }
-    }
-    if (temp > 0){
-      return true;
-    }
-    else{
-      return false;
-    }
   }
 }
